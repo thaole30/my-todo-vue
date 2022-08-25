@@ -1,0 +1,7 @@
+export const mutation_types = {
+  ADD_NEW_TODO: "ADD_NEW_TODO",
+  DELETE_TODO: "DELETE_TODO",
+  UPDATE_TODO: "UPDATE_TODO",
+  SELECT_TODO: "SELECT_TODO",
+  SET_TODOS: "SET_TODOS",
+};

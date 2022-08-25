@@ -1,18 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1 class="title">TODOS</h1>
+    <AddTodo />
+    <FilterTodo />
+    <TodoList />
+    <!-- <Drawer /> -->
   </div>
 </template>
 
 <script>
+import AddTodo from "@/components/AddTodo/AddTodo.vue";
+import FilterTodo from "@/components/FilterTodo/FilterTodo.vue";
+import TodoList from "@/components/TodoList/TodoList.vue";
+// import Drawer from "@/components/Drawer/Drawer.vue";
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "HomeView",
-  components: {
-    HelloWorld,
-  },
+  components: { AddTodo, FilterTodo, TodoList },
 };
 </script>
