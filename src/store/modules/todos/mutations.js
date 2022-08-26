@@ -3,12 +3,12 @@ import { v4 as uuidv4 } from "uuid";
 
 export const mutations = {
   [mutation_types.SET_TODOS]: (state, todos) => {
-    console.log("mutate todos", todos);
     state.todos = todos;
+    state.allTodos = todos;
   },
   [mutation_types.DELETE_TODO]: (state, id) => {
-    console.log("mutate id", id);
     state.todos = state.todos.filter((todo) => todo.id !== id);
+    state.allTodos = state.allTodos.filter((todo) => todo.id !== id);
   },
   [mutation_types.UPDATE_TODO]: (state, id) => {
     state.todos.map((todo) => {
@@ -21,6 +21,13 @@ export const mutations = {
     state.todos.unshift({
       ...newTodo,
       id: uuidv4(),
+    });
+  },
+  [mutation_types.SET_TODOS_BY_FILTER]: (state, filterBy) => {
+    state.todos = state.allTodos.filter((todo) => {
+      return filterBy === "all"
+        ? true
+        : todo.completed === (filterBy === "active" ? false : true);
     });
   },
 };

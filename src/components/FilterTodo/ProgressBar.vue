@@ -18,6 +18,10 @@ export default {
       doneTodos: "doneTodos",
       allTodos: "allTodos",
     }),
+    // allTodos() {
+    //   console.log("full todosssss", this.$store.getters.allTodos);
+    //   return this.$store.getters.allTodos;
+    // },
     // percentage: (this.doneTodos.length / this.allTodos.length) * 100,
     percentage() {
       return (this.doneTodos.length / this.allTodos.length) * 100;

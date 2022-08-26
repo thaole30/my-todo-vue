@@ -1,9 +1,12 @@
 export const getters = {
   allTodos: (state) => {
-    console.log("full todos", state.todos);
-    return state.todos;
+    console.log("full todos", state.allTodos);
+    return state.allTodos;
   },
   doneTodos: (state) => {
-    return state.todos.filter((todo) => todo.completed);
+    return state.allTodos.filter((todo) => todo.completed);
+  },
+  notDoneTodos: (state) => {
+    return state.allTodos.filter((todo) => !todo.completed);
   },
 };

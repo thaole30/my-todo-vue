@@ -1,11 +1,12 @@
 <template>
   <div>
-    <TodoItem v-for="todo in allTodos" :key="todo.id" :todo="todo" />
+    <TodoItem v-for="todo in todos" :key="todo.id" :todo="todo" />
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mutation_types } from "../../store/modules/todos/mutation_types";
+import { mapGetters, mapState } from "vuex";
 import TodoItem from "./TodoItem.vue";
 
 export default {
@@ -14,29 +15,28 @@ export default {
 
   data() {
     return {
-      todos: [
-        { id: 1, name: "Learn Javascript", status: "active" },
-        {
-          id: 2,
-          name: "Learn Vuejs",
-          status: "active",
-        },
-        {
-          id: 3,
-          name: "Learn Vuejs",
-          status: "completed",
-        },
-      ],
       loading: false,
     };
   },
   computed: {
-    ...mapGetters(["allTodos"]),
+    // ...mapGetters(["allTodos"]),
+    ...mapGetters(["getFilter"]),
+    // ...mapState(["filterBy"]),
+    ...mapState({
+      // arrow functions can make the code very succinct!
+      filterBy: (state) => state.filters.filterBy,
+      todos: (state) => state.todos.todos,
+    }),
+  },
+  watch: {
+    filterBy(newValue, oldValue) {
+      console.log(`Updating from ${oldValue} to ${newValue}`);
+      this.$store.commit(mutation_types.SET_TODOS_BY_FILTER, newValue);
+    },
   },
 
-  mounted() {
+  created() {
     this.$store.dispatch("fetchTodos");
-    mapActions(["fetchTodos"]);
   },
 };
 </script>
