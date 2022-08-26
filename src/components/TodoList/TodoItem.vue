@@ -7,9 +7,19 @@
         @change="updateTodo(todo.id)"
       />
       <span> {{ todo.title }}</span>
+      <template>
+        <a-input v-model:value="todo.title" placeholder="Basic usage" />
+      </template>
     </div>
     <div class="task-right">
-      <span @click="deleteTodo(todo.id)">Delete</span>
+      <div class="btn-actions">
+        <button style="background-color: green" @click="editTodo(todo.id)">
+          Edit
+        </button>
+        <button style="background-color: red" @click="deleteTodo(todo.id)">
+          Delete
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -23,11 +33,11 @@ export default {
   props: {
     todo: Object,
   },
-  data() {
-    return {
-      item: this.todo,
-    };
-  },
+  // data() {
+  //   return {
+  //     item: this.todo,
+  //   };
+  // },
 
   computed: {
     isChecked() {
@@ -38,6 +48,9 @@ export default {
     ...mapActions(["deleteTodo"]),
     updateTodo(id) {
       this.$store.commit(mutation_types.UPDATE_TODO, id);
+    },
+    editTodo(id) {
+      console.log("id edit", id);
     },
   },
 };
@@ -65,5 +78,10 @@ export default {
   padding: 5px;
   cursor: pointer;
   color: red;
+}
+
+.btn-actions {
+  display: flex;
+  gap: 10px;
 }
 </style>

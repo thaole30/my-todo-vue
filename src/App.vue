@@ -2,7 +2,8 @@
   <div id="app">
     <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/vuetify">Vuetify</router-link>
     </nav>
     <router-view />
   </div>
@@ -18,7 +19,6 @@
   margin-top: 60px;
   width: 500px;
   margin: auto;
-  background-color: #f1f1f1;
   padding: 15px;
 }
 .container {
@@ -37,7 +37,7 @@
   padding: 10px 20px;
   width: 100%;
   display: block;
-  border: 1px solid #f1f1f1;
+  border: 1px solid purple;
 }
 .task-header {
   display: flex;
