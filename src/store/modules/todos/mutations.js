@@ -30,4 +30,12 @@ export const mutations = {
         : todo.completed === (filterBy === "active" ? false : true);
     });
   },
+  [mutation_types.EDIT_TODO]: (state, { id, editedTitle }) => {
+    console.log("state todoo", id, editedTitle);
+    state.todos.map((todo) => {
+      if (todo.id === id) todo.title = editedTitle;
+      return todo;
+    });
+    console.log("new todos", state.todos);
+  },
 };
