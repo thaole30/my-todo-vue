@@ -59,6 +59,10 @@ export default {
     ...mapActions(["deleteTodo"]),
     updateTodo(id) {
       this.$store.commit(mutation_types.UPDATE_TODO, id);
+        this.$store.commit(
+        mutation_types.SET_TODOS_BY_FILTER,
+        this.$store.state.filters.filterBy
+      );
     },
     onChange(e) {
       this.input = e.target.value;
